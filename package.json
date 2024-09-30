@@ -1,0 +1,29 @@
+{
+  "name": "circular-extends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch 'src/index.ts' --exec 'ts-node -r tsconfig-paths/register src/index.ts'",
+    "start2": "npx tsx ./src/index.ts",
+    "test:unit:watch:spec": "jest --maxWorkers=25% --silent=false --config=jest.config.ts --no-cache --verbose=false --detectOpenHandles --forceExit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "nodemon": "^3.1.4",
+    "reflect-metadata": "^0.2.2",
+    "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.3.0",
+    "typescript": "~5.4.5"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.3",
+    "ts-node": "^10.9.1"
+  }
+}
