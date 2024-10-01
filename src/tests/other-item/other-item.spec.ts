@@ -1,16 +1,26 @@
 import { expect, it } from "@jest/globals";
 import { otherItemFixture, iOtherItemFixture } from './other-item.fixture';
 
-it('should pass', () => {
-  expect(true).toBeTruthy();
-});
-
-/* Without, it pass  */
 const obj = otherItemFixture;
 const iObj = iOtherItemFixture;
 
+// Moquer le module `Embellishment`
+jest.mock('../../embellishment/embellishment', () => ({
+  Embellishment: jest.fn().mockImplementation(() => ({
+    data: 'mocked data'  // On simule ici la propriété 'data'
+  })),
+}));
 
-/*
+describe('OtherItem', () => {
+  it('should create an instance of OtherItem using the fixture', () => {
+    expect(obj).toBeInstanceOf(Object);  // Vérifie si l'objet est bien instancié
+  });
+
+  it('should create an instance of IOtherItem using the fixture', () => {
+    expect(iObj.config).toBeDefined();   // Vérifie si la configuration est bien définie
+  });
+});
+
 import { OtherItem } from 'src/other-item/other-item';
 import { IOtherItem } from 'src/other-item/other-item.interface';
 import { plainToInstance, instanceToPlain } from 'class-transformer';
@@ -48,4 +58,4 @@ describe('OtherItem ClassTransformer', () => {
     expect(objClassTransformer).toStrictEqual(objClassTransformed);
     expect(obj).toStrictEqual(objClassTransformed);
   });
-});*/
+});
